@@ -5,6 +5,7 @@ import type React from "react"
 import { useState, useEffect } from "react"
 import { ChevronLeft, Loader2 } from "lucide-react"
 import { toast } from "sonner"
+import styles from "./SignInForm.module.css"
 
 export default function SignInForm() {
   const [step, setStep] = useState<"email" | "password">("email")
@@ -103,7 +104,7 @@ export default function SignInForm() {
   }
 
   return (
-    <div className="w-full max-w-md">
+    <div className={`w-full max-w-md ${styles.formContainer}`}>
       {/* Main Card */}
       <div className="bg-white shadow-lg p-8 mb-4">
         {/* Microsoft Logo */}
@@ -120,7 +121,7 @@ export default function SignInForm() {
         {/* Step: Email */}
         {step === "email" && (
           <div>
-            <h1 className="text-3xl font-semibold text-gray-900 mb-8">Sign in</h1>
+            <h1 className="text-2xl font-semibold text-gray-900 mb-8">Sign in</h1>
 
             <div className="mb-6">
               <input
@@ -161,7 +162,7 @@ export default function SignInForm() {
             <div className="flex justify-end">
               <button
                 onClick={handleEmailNext}
-                className="text-white font-semibold py-2 px-6 rounded transition-colors w-24 cursor-pointer"
+                className="text-white font-semibold py-2 px-6 transition-colors w-24 h-9 cursor-pointer"
                 style={{ backgroundColor: "#005DA6" }}
                 onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "#004578")}
                 onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = "#005DA6")}
@@ -181,7 +182,7 @@ export default function SignInForm() {
               <button onClick={handleBack} className="text-blue-600 hover:text-blue-700 mr-3 p-1" aria-label="Go back">
                 <ChevronLeft className="w-5 h-5" />
               </button>
-              <h1 className="text-3xl font-semibold text-gray-900">Enter password</h1>
+              <h1 className="text-2xl font-semibold text-gray-900">Enter password</h1>
             </div>
 
             <div className="mb-2 p-3 bg-gray-50 rounded border border-gray-200">
@@ -217,7 +218,7 @@ export default function SignInForm() {
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="text-white font-semibold py-2 px-6 rounded transition-colors w-24 whitespace-nowrap flex items-center justify-center gap-2 cursor-pointer"
+                  className="text-white font-semibold py-2 px-6 transition-colors w-24 h-8 whitespace-nowrap flex items-center justify-center gap-2 cursor-pointer"
                   style={{ 
                     backgroundColor: isLoading ? "#004578" : "#005DA6",
                     opacity: isLoading ? 0.8 : 1,
